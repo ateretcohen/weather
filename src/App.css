@@ -1,0 +1,8 @@
+.App {
+  text-align: center;
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSeKQGeFG-TdQxGnD0CnD-nZ0f3ENMK0wCVw&usqp=CAU);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 100vh;
+}
