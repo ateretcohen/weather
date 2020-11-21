@@ -13,9 +13,10 @@ export default class Home extends Component {
         }
     }
     search=()=>{
+        //save today day
         const d = new Date()
         this.setState({day:d.getDay()})
-       // go to getWeather
+       // go to getWeather func
        this.props.getWeather(this.state.city,this.state.country);
        this.setState({findcity:true})
     } 
@@ -24,7 +25,9 @@ export default class Home extends Component {
             <div>
                 <input className="inputStyle" type="text" placeholder="enter city" onChange={(e)=>this.setState({city:e.target.value})}/>
                 <input className="inputStyle" type="text" placeholder="enter country" onChange={(e)=>this.setState({country:e.target.value})}/>
+                {/* search city from json data */}
                 <button className="buttonStyle" onClick={()=>this.search()}>search</button>
+                {/* add to fevorite list */}
                 <button className="buttonStyle" onClick={()=>this.props.addToFevorite()}>add to fevorite</button>
 
                 {
@@ -49,6 +52,7 @@ export default class Home extends Component {
                               <p>minimum temperature{this.props.WeatherDitails.weather[this.props.day].min_temp}c</p>
                               </div>
                               <br/>
+                              {/* map on all days city weather */}
                               {
                                   this.props.WeatherDitails.weather.map((item,key)=>{
                                       return (<div key={key+1} className="daysWeather">

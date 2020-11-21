@@ -23,6 +23,7 @@ export default class App extends Component {
     days: ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
     findcity:false
   }
+  // get data from json
   componentDidMount(){
     this.setState({weatherList:Data})
     const d = new Date()
@@ -69,6 +70,7 @@ export default class App extends Component {
       alert("exsist in fevorite list")
     }
   }
+  // remuve city from fevorite list
   remuveFevorite=(remuveCity)=>{
     console.log(remuveCity);
     let newList=this.state.fevoriteList.filter(object=>remuveCity.id!==object.id)
