@@ -22,10 +22,10 @@ export default class Home extends Component {
     render() {
         return (
             <div>
-                <input type="text" placeholder="enter city" onChange={(e)=>this.setState({city:e.target.value})}/>
-                <input type="text" placeholder="enter country" onChange={(e)=>this.setState({country:e.target.value})}/>
-                <button onClick={()=>this.search()}>search</button>
-                <button onClick={()=>this.props.addToFevorite()}>add to fevorite</button>
+                <input className="inputStyle" type="text" placeholder="enter city" onChange={(e)=>this.setState({city:e.target.value})}/>
+                <input className="inputStyle" type="text" placeholder="enter country" onChange={(e)=>this.setState({country:e.target.value})}/>
+                <button className="buttonStyle" onClick={()=>this.search()}>search</button>
+                <button className="buttonStyle" onClick={()=>this.props.addToFevorite()}>add to fevorite</button>
 
                 {
                    
@@ -39,19 +39,22 @@ export default class Home extends Component {
                               <p>no found city</p>
                           </div>
                           :
-                          <div>
+                          <div >
+                               <br/>
+                              <div className="divStyle">
                               {/* show weather location ditails */}
-                              <p>{this.props.WeatherDitails.city} {this.props.WeatherDitails.country}</p>
-                              <p>{this.state.days[this.props.day]}</p>
-                              <p>maximum temperature {this.props.WeatherDitails.weather[this.props.day].max_temp}</p>
-                              <p>minimum temperature{this.props.WeatherDitails.weather[this.props.day].min_temp}</p>
-                              
+                              <p><b>{this.props.WeatherDitails.city}, {this.props.WeatherDitails.country}</b></p>
+                              <p><b>{this.state.days[this.props.day]}</b></p>
+                              <p>maximum temperature {this.props.WeatherDitails.weather[this.props.day].max_temp}c</p>
+                              <p>minimum temperature{this.props.WeatherDitails.weather[this.props.day].min_temp}c</p>
+                              </div>
+                              <br/>
                               {
                                   this.props.WeatherDitails.weather.map((item,key)=>{
-                                      return (<div key={key+1}>
-                                         <p>{this.state.days[key]}</p>
-                                         <span> {item.max_temp}</span><br/>
-                                         <span>{item.min_temp}</span> 
+                                      return (<div key={key+1} className="daysWeather">
+                                         <p><b>{this.state.days[key]}</b></p>
+                                         <span> {item.max_temp}c</span><br/>
+                                         <span>{item.min_temp}c</span> 
                                       </div>)
                                   })
                               }

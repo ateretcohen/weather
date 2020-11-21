@@ -4,17 +4,14 @@ export default class Fevorite extends Component {
     render() {
         return (
             <div>
-                {
-                    console.log(this.props.day)
-                }
                {
                    
                    this.props.fevoriteList.map((item,i)=>{
-                       return (<div>
-                           <hr/>
-                           <p>{item.city}</p>
-                           <p>{item.weather[this.props.day].max_temp}</p>
-                           <p>{item.weather[this.props.day].min_temp}</p>
+                       return (<div className="divStyle" style={{marginBottom:"2%"}}>
+                           <p><b>{item.city}</b></p>
+                           <p>{item.weather[this.props.day].max_temp}c</p>
+                           <p>{item.weather[this.props.day].min_temp}c</p>
+                           <div onClick={()=>this.props.remuveFevorite(item)}><b>remuve from fevorite</b></div>
                        </div>)
                    })
                }

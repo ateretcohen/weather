@@ -32,7 +32,7 @@ export default class App extends Component {
   getWeather = async (city, country) => {
      this.setState({findcity:true})
     let x=null;
-    x= this.state.weatherList.find(item=> city==item.city && country==item.country)
+    x= this.state.weatherList.find(item=> city===item.city && country===item.country)
     if(x)
     {
       this.setState({error:false})
@@ -54,8 +54,8 @@ export default class App extends Component {
   // add the city to fevorite list
   addToFevorite=()=>{
     let x=undefined
-    x=this.state.fevoriteList.find(item=> String(this.state.WeatherDitails.city)==String(item.city) && String(this.state.WeatherDitails.country)==String(item.country))
-    if(!this.state.error && x==undefined)
+    x=this.state.fevoriteList.find(item=> String(this.state.WeatherDitails.city)===String(item.city) && String(this.state.WeatherDitails.country)===String(item.country))
+    if(!this.state.error && x===undefined)
     {
       let object={
         id:this.state.WeatherDitails.id,
@@ -68,6 +68,12 @@ export default class App extends Component {
     else{
       alert("exsist in fevorite list")
     }
+  }
+  remuveFevorite=(remuveCity)=>{
+    console.log(remuveCity);
+    let newList=this.state.fevoriteList.filter(object=>remuveCity.id!==object.id)
+console.log(newList);
+this.setState({fevoriteList:[...newList]})
   }
   render() {
     return (
@@ -99,6 +105,7 @@ export default class App extends Component {
                     {...props}
                     fevoriteList={this.state.fevoriteList}
                     day={this.state.day}
+                    remuveFevorite={this.remuveFevorite}
                   />
                 )}
               />
